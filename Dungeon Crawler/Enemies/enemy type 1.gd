@@ -7,11 +7,15 @@ var speed = 40
 var DAMAGE = 1
 var movetimer_length = 15
 
+var viewport
+
 func _ready():
-		$anim.play("default")
-		movedir = dir.rand()
-		set_physics_process(false)
-		
+	viewport = get_tree().get_root()
+	$anim.play("default")
+	movedir = dir.rand()
+	set_physics_process(false)
+	$process.connect("viewport_entered",self,"entered_viewport")
+	$process.connect("viewport_exited",self,"exited_viewport")
 		
 func _physics_process(delta):
 	movement_loop(speed)
@@ -22,9 +26,10 @@ func _physics_process(delta):
 		movedir = dir.rand()
 		movetimer = movetimer_length
 
+func entered_viewport(viewport_in):
+	if viewport == viewport_in:
+		set_physics_process(true)
 		
-		
-
-
-func _on_process_viewport_exited(viewport):
-	pass # Replace with function body.
+func exited_viewport(viewport_in):
+	if viewport == viewport_in:
+		set_physics_process(false)

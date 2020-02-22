@@ -19,3 +19,4 @@ scale = Vector2( 1, 1.03526 )
 shape = SubResource( 1 )
 
 [node name="cameraport" type="Viewport" parent="."]
+

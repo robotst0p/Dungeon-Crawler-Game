@@ -48,6 +48,7 @@ position = Vector2( 37.0861, 215.293 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 217.609, 208.695 )
+
 [connection signal="viewport_entered" from="enemy type 1/process" to="Camera" method="_on_process_viewport_entered"]
 [connection signal="viewport_exited" from="enemy type 1/process" to="Camera" method="_on_process_viewport_exited"]
 [connection signal="viewport_entered" from="enemy type 2/process" to="Camera" method="_on_process_viewport_entered"]
