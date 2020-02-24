@@ -4,3 +4,6 @@ Hud Dimensions: 86 by 26 pixels
 Health Bar Dimensions: 56 by 4 pixels
 XP Bar Dimensions: 56 by 3 pixels
 Stamina Bar Dimensions: 56 by 4 pixels
+Inventory Button Dimensions: 18 by 15 pixels
+Key Pickup Dimensions: 5 by 8 pixels
+Locked Door Dimensions: 16 by 16 pixels

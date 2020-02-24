@@ -10,13 +10,13 @@ var movetimer_length = 15
 var viewport
 
 func _ready():
+	set_collision_mask_bit(1,1)
 	viewport = get_tree().get_root()
 	$anim.play("default")
 	movedir = dir.rand()
 	set_physics_process(false)
 	$process.connect("viewport_entered",self,"entered_viewport")
 	$process.connect("viewport_exited",self,"exited_viewport")
-		
 func _physics_process(delta):
 	movement_loop(speed)
 	damage_loop(TYPE)

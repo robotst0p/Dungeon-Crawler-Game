@@ -14,12 +14,14 @@ var texture_default = null
 var texture_hurt = null
 var health = MAXHEALTH
 var processcounter = 0
+onready var hud = get_parent().get_node("Overlay")
+signal health_change
+signal xp_change
 
 func _ready():
 	texture_default = $Sprite.texture
 	texture_hurt = load($Sprite.texture.get_path().replace(".png", "_hurt.png"))
-	
-	
+	connect("xp_change",hud,"_on_xp_change")	
 func damage_loop(TYPE):
 	if hitstun > 0:
 		hitstun -= 1
@@ -31,11 +33,13 @@ func damage_loop(TYPE):
 			get_parent().add_child(death_animation)
 			death_animation.global_transform = global_transform
 			queue_free()
+			emit_signal("xp_change")
 	for area in $hitbox.get_overlapping_areas():
 		var body = area.get_parent()
 		if hitstun == 0 and body.get("DAMAGE") != null and body.get("TYPE") != TYPE and body.get("TYPE") != "SWORD" and body.get("TYPE") != "PLAYER":
 			hitstun = 10
 			health -= body.get("DAMAGE")
+			emit_signal("health_change")
 			knockdir = global_transform.origin - body.global_transform.origin
 		if hitstun == 0 and body.get("TYPE") == "SWORD" and TYPE != "PLAYER":
 			hitstun = 10

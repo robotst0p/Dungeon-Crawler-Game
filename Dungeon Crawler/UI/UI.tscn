@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/health bar background.png" type="Texture" id=1]
+[ext_resource path="res://UI/Health Bar Sprite.png" type="Texture" id=2]
+[ext_resource path="res://UI/Stamina Bar Sprite.png" type="Texture" id=3]
+[ext_resource path="res://UI/XP Bar Sprite.png" type="Texture" id=4]
+[ext_resource path="res://UI/Inventory Button Sprite.png" type="Texture" id=5]
+[ext_resource path="res://Pickups/key.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/keytextfont.tres" type="DynamicFont" id=7]
+
+[sub_resource type="GDScript" id=1]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="UI" type="MarginContainer" parent="."]
+margin_right = 85.0
+margin_bottom = 38.0
+script = SubResource( 1 )
+
+[node name="bars" type="VBoxContainer" parent="UI"]
+margin_right = 85.0
+margin_bottom = 38.0
+
+[node name="healthbar" type="HBoxContainer" parent="UI/bars"]
+margin_right = 85.0
+margin_bottom = 4.0
+
+[node name="TextureProgress" type="TextureProgress" parent="UI/bars/healthbar"]
+margin_right = 50.0
+margin_bottom = 4.0
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+fill_mode = 1
+
+[node name="staminabar" type="HBoxContainer" parent="UI/bars"]
+margin_top = 8.0
+margin_right = 85.0
+margin_bottom = 12.0
+
+[node name="TextureProgress" type="TextureProgress" parent="UI/bars/staminabar"]
+margin_right = 56.0
+margin_bottom = 4.0
+value = 100.0
+texture_progress = ExtResource( 3 )
+
+[node name="xpbar" type="HBoxContainer" parent="UI/bars"]
+margin_top = 16.0
+margin_right = 85.0
+margin_bottom = 19.0
+
+[node name="TextureProgress" type="TextureProgress" parent="UI/bars/xpbar"]
+margin_right = 56.0
+margin_bottom = 3.0
+texture_progress = ExtResource( 4 )
+
+[node name="Inventory" type="HBoxContainer" parent="UI/bars"]
+margin_top = 23.0
+margin_right = 85.0
+margin_bottom = 38.0
+
+[node name="TextureButton" type="TextureButton" parent="UI/bars/Inventory"]
+margin_right = 18.0
+margin_bottom = 15.0
+texture_normal = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="UI"]
+position = Vector2( 61.5786, 6.35638 )
+texture = ExtResource( 6 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="keylabel" type="RichTextLabel" parent="."]
+margin_left = 68.1832
+margin_top = -2.28521
+margin_right = 80.1832
+margin_bottom = 24.7148
+size_flags_horizontal = 3
+custom_fonts/mono_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 7 )
+custom_colors/default_color = Color( 1, 0.913725, 0.0156863, 1 )
+text = "0"
