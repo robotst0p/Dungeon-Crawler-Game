@@ -75,11 +75,6 @@ func movement_loop(speed):
 		motion = knockdir.normalized() * 125
 	move_and_slide(motion, Vector2(0,0))
 	
-func action_loop():
-	pass
-	
-	
-	
 func spritedir_loop():
 	match movedir:
 		Vector2(-1,0):

@@ -56,3 +56,14 @@ func controls_loop():
 		
 	movedir.x = -int(LEFT) + int(RIGHT)
 	movedir.y = -int(UP) + int(DOWN)
+	
+	
+		
+	
+
+
+
+
+	
+
+
