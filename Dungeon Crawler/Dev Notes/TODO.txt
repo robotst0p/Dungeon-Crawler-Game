@@ -1,0 +1,13 @@
+1) Kill all enemy room
+2) Main Menu 
+3) Player Death Scene
+4) Leveling System
+5) Add Bow/Projectile Weapon
+6) Add Stats
+7) Add Inventory Screen
+8) Add Health Potion Item
+9) Second Enemy Type
+10) Boss Battle
+11) Create dash animation
+12) Main Menu
+13) Overhaul Combat

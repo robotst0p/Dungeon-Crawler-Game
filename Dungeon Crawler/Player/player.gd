@@ -9,10 +9,18 @@ var pulltoggle = 0
 var DAMAGE = 2
 var state = "default"
 var keys = 0
+var dashtimer = 0
+var recovertime = 30
+var dashflag = true
+
 
 
 
 func _physics_process(delta):
+	if dashtimer >= 0:
+		dashtimer -= 1
+		speed = 200
+	recovertime -= 1
 	match state:
 		"default":
 			state_default()
@@ -55,11 +63,15 @@ func controls_loop():
 	var RIGHT = Input.is_action_pressed("ui_right")
 	var UP = Input.is_action_pressed("ui_up")
 	var DOWN = Input.is_action_pressed("ui_down")
+	var DASH = Input.is_action_just_pressed(("dash"))
 		
 	movedir.x = -int(LEFT) + int(RIGHT)
 	movedir.y = -int(UP) + int(DOWN)
 	
-	
+	if DASH and recovertime <= 0 and hud.get("stamina") >= 20:
+		dashtimer = 10
+		recovertime = 30
+		emit_signal("stamina_change")
 		
 	
 

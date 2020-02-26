@@ -54,7 +54,7 @@ script = ExtResource( 8 )
 fill_mode = 0
 
 [node name="enemies" parent="." instance=ExtResource( 9 )]
-tile_data = PoolIntArray( 65538, 0, 0, 65546, 0, 0, 327703, 0, 0, 458775, 0, 0, 458778, 0, 0, 589847, 0, 0, 851969, 0, 0, 851978, 0, 0 )
+tile_data = PoolIntArray( 65538, 0, 0, 65546, 0, 0, 327703, 0, 0, 458775, 0, 0, 458778, 0, 0, 589847, 0, 0, 851969, 0, 0, 851978, 0, 0, 917507, 0, 0 )
 
 [node name="key" parent="." instance=ExtResource( 10 )]
 position = Vector2( 244.286, 199.004 )

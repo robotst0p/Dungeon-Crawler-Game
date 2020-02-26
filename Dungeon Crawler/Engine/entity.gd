@@ -17,11 +17,13 @@ var processcounter = 0
 onready var hud = get_parent().get_node("Overlay")
 signal health_change
 signal xp_change
+signal stamina_change
 
 func _ready():
 	texture_default = $Sprite.texture
 	texture_hurt = load($Sprite.texture.get_path().replace(".png", "_hurt.png"))
 	connect("xp_change",hud,"_on_xp_change")	
+	connect("stamina_change",hud, "_on_stamina_change")
 func damage_loop(TYPE):
 	if hitstun > 0:
 		hitstun -= 1
