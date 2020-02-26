@@ -73,6 +73,7 @@ rotation = 3.14159
 
 [node name="key2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 395.07, 101.326 )
+
 [connection signal="health_change" from="player" to="Overlay" method="_on_player_health_change"]
 
 [editable path="player"]
