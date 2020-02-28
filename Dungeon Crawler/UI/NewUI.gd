@@ -32,5 +32,5 @@ func _on_xp_change():
 	$Tween.start()
 	
 func _on_stamina_change():
-	$Tween.interpolate_property(self, "stamina", stamina, stamina - 20, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property(self, "stamina", stamina, stamina - 20, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()

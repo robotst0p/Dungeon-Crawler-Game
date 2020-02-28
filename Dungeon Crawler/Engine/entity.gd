@@ -24,6 +24,7 @@ func _ready():
 	texture_hurt = load($Sprite.texture.get_path().replace(".png", "_hurt.png"))
 	connect("xp_change",hud,"_on_xp_change")	
 	connect("stamina_change",hud, "_on_stamina_change")
+	
 func damage_loop(TYPE):
 	if hitstun > 0:
 		hitstun -= 1
