@@ -10,6 +10,7 @@ var movetimer_length = 15
 var viewport
 
 func _ready():
+#	$blood.set_emitting(false)
 	set_collision_mask_bit(1,1)
 	viewport = get_tree().get_root()
 	$anim.play("default")
@@ -17,6 +18,7 @@ func _ready():
 	set_physics_process(false)
 	$process.connect("viewport_entered",self,"entered_viewport")
 	$process.connect("viewport_exited",self,"exited_viewport")
+	
 func _physics_process(delta):
 	movement_loop(speed)
 	damage_loop(TYPE)
@@ -29,6 +31,7 @@ func _physics_process(delta):
 func entered_viewport(viewport_in):
 	if viewport == viewport_in:
 		set_physics_process(true)
+		pass
 		
 func exited_viewport(viewport_in):
 	if viewport == viewport_in:

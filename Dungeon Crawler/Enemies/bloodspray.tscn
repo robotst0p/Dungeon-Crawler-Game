@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Enemies/bloodspray.gd" type="Script" id=1]
+[ext_resource path="res://Lighting/light.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0.231278, 0.462555, 0.914097 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Curve" id=1]
+max_value = 1000.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1000 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+width = 32
+curve = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+min_value = -1.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+max_value = 10.3
+_data = [ Vector2( 0, 3.22971 ), 0.0, 0.0, 0, 0, Vector2( 0.128735, 4.46433 ), 0.0, 0.0, 0, 0, Vector2( 0.223584, 4.50416 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.31803 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+width = 32
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+spread = 31.72
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 155.25
+initial_velocity_random = 0.48
+angular_velocity = 720.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping_curve = SubResource( 2 )
+scale = 0.6
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 9 )
+hue_variation_curve = SubResource( 4 )
+
+[node name="blood" type="Particles2D"]
+show_behind_parent = true
+z_index = 1
+amount = 200
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 7 )
+script = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+modulate = Color( 0.129412, 0.501961, 0.937255, 1 )
+self_modulate = Color( 0.156863, 0.388235, 1, 1 )
+position = Vector2( 0.738672, 0.143053 )
+scale = Vector2( 0.125622, 0.119504 )
+texture = ExtResource( 2 )
+texture_scale = 0.75
+color = Color( 0.513726, 0.0901961, 0.0823529, 1 )
+energy = 4.65
+mode = 2
+range_height = 5.0

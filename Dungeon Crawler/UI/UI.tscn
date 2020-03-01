@@ -100,13 +100,27 @@ texture = ExtResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="keylabel" type="RichTextLabel" parent="."]
-margin_left = 68.1832
-margin_top = -2.28521
-margin_right = 80.1832
-margin_bottom = 24.7148
+[node name="key_label" type="RichTextLabel" parent="."]
+margin_left = 67.6687
+margin_top = -0.778648
+margin_right = 77.6687
+margin_bottom = 38.2214
+rect_clip_content = false
 size_flags_horizontal = 3
 custom_fonts/mono_font = ExtResource( 7 )
 custom_fonts/normal_font = ExtResource( 7 )
-custom_colors/default_color = Color( 1, 0.913725, 0.0156863, 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "0"
+
+[node name="level_label" type="RichTextLabel" parent="."]
+margin_left = 21.3617
+margin_top = 23.081
+margin_right = 115.362
+margin_bottom = 74.081
+custom_fonts/mono_font = ExtResource( 7 )
+custom_fonts/bold_italics_font = ExtResource( 7 )
+custom_fonts/italics_font = ExtResource( 7 )
+custom_fonts/bold_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 7 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Level:"

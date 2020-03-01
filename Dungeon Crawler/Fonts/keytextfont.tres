@@ -3,5 +3,7 @@
 [ext_resource path="res://Fonts/runescape_uf.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 20
+size = 15
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
 font_data = ExtResource( 1 )
