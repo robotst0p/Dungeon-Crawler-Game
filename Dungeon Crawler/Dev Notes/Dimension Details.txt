@@ -7,3 +7,5 @@ Stamina Bar Dimensions: 56 by 4 pixels
 Inventory Button Dimensions: 18 by 15 pixels
 Key Pickup Dimensions: 5 by 8 pixels
 Locked Door Dimensions: 16 by 16 pixels
+Shotgun: 512 by 189 pixels
+Window Width: 270 by 243 pixels

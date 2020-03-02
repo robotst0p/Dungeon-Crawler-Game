@@ -110,16 +110,16 @@ func movement_loop(speed):
 	var motion = Vector2.ZERO
 	match(state):
 		State.Default, State.Attack:
-			motion = movedir.normalized() * speed
+			motion = movedir.normalized() * speed 
 		State.Stunned:
 			motion = knockdir.normalized() * stun_velocity
 	move_and_slide(motion, Vector2(0,0))
 	
 func spritedir_loop():
 	match movedir:
-		Vector2(-1,0):
-			spritedir = "left"
 		Vector2(1,0):
+			spritedir = "left"
+		Vector2(-1,0):
 			spritedir = "right"
 		Vector2(0,1):
 			spritedir = "down"
@@ -131,8 +131,9 @@ func anim_switch(animation):
 	if $anim.current_animation != newanim:
 		$anim.play(newanim)
 		
-func use_item(item):
+func use_item(item, attackdir):
 	var newitem = item.instance()
 	newitem.add_to_group(str(newitem.get_name(),self))
 	add_child(newitem)
+	newitem.direction(attackdir)
 	

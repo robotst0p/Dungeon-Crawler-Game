@@ -14,8 +14,11 @@ var dashflag = true
 var xplevel = 1
 var level = 1
 var level_animation
+var mouse_pos
+var attackdir
 
 onready var levelanimation = preload("res://Player/level_up.tscn")
+onready var viewport = get_viewport()
 
 var SwordScene = preload("res://items/sword.tscn")
 
@@ -59,16 +62,18 @@ func state_default():
 	else:
 		anim_switch("idle")
 		speed = 70
-	 	
-	if (Input.is_action_just_pressed("a") and $hit_reset_timer.is_stopped()) and state != State.Stunned:
-		state = State.Attack
-		$hit_reset_timer.start()
-		use_item(SwordScene)
+		
+#func _input(event):
+#	if event is InputEventMouseButton and $hit_reset_timer.is_stopped() and state != State.Stunned:
+#		state = State.Attack
+#		mouse_pos = event.position
+#		$hit_reset_timer.start()
+#		print(mouse_pos)
 
 func state_swing():
 	controls_loop()
 	anim_switch("idle")
-	movement_loop(speed)
+	movement_loop(speed*1.2)
 	spritedir_loop()
 	damage_loop(TYPE)
 	if ($hit_reset_timer.is_stopped()):
@@ -80,6 +85,7 @@ func controls_loop():
 	var UP = Input.is_action_pressed("ui_up")
 	var DOWN = Input.is_action_pressed("ui_down")
 	var DASH = Input.is_action_just_pressed(("dash"))
+	var ATTACK = Input.is_action_just_pressed(("a"))
 		
 	movedir.x = -int(LEFT) + int(RIGHT)
 	movedir.y = -int(UP) + int(DOWN)
@@ -89,7 +95,13 @@ func controls_loop():
 		recovertime = 30
 		emit_signal("stamina_change")
 		
-	
+	if (ATTACK and $hit_reset_timer.is_stopped()) and state != State.Stunned:
+		print(self.get_global_transform_with_canvas().origin)
+		state = State.Attack
+		mouse_pos = viewport.get_mouse_position()
+		attackdir = mouse_pos - self.get_global_transform_with_canvas().origin
+		$hit_reset_timer.start()
+		use_item(SwordScene, attackdir)
 
 
 
