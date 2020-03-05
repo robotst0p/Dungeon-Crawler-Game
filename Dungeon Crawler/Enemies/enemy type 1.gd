@@ -6,6 +6,8 @@ var pushtoggle = 0
 var speed = 40
 var DAMAGE = 1
 var movetimer_length = 15
+var player = get_parent().get_node("player")
+var playerpos
 
 var viewport
 
@@ -20,6 +22,7 @@ func _ready():
 	$process.connect("viewport_exited",self,"exited_viewport")
 	
 func _physics_process(delta):
+	playerpos = player.transform.origin
 	movement_loop(speed)
 	damage_loop(TYPE)
 	if movetimer > 0:

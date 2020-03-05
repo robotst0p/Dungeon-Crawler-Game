@@ -31,6 +31,7 @@ spread = 113.07
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 129.29
 initial_velocity_random = 0.48
+angular_velocity = 0.897987
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 damping_curve = SubResource( 2 )
