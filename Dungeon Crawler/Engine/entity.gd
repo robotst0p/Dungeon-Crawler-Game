@@ -17,6 +17,7 @@ onready var hud = get_parent().get_node("Overlay")
 signal health_change
 signal xp_change
 signal stamina_change
+var tree = get_tree()
 
 var stun_velocity = 125
 
@@ -52,16 +53,18 @@ func damage_loop(TYPE):
 			
 		for area in $hitbox.get_overlapping_areas():
 			var body = area.get_parent()
-			if (TYPE == "PLAYER" and body.get("TYPE") == "ENEMY"):
+			if TYPE == "PLAYER" and (body.get("TYPE") == "ENEMY" or body.get("TYPE") == "ENEMY PROJECTILE"):
 				hurt(body.get("DAMAGE"), true)
 				stun(global_transform.origin - body.global_transform.origin)
-			elif (TYPE == "ENEMY" and body.get("TYPE") == "SWORD"):
+				if body.get("TYPE") == "ENEMY PROJECTILE":
+					body.queue_free()
+			elif (TYPE == "ENEMY" and body.get("TYPE") == "BULLET"):
 				hurt(body.get("DAMAGE"), false)
 				stun(global_transform.origin - body.global_transform.origin)
-				
 				var blood_spray = BloodSpray.instance()
 				blood_spray.create(self, knockdir)
 				first_level.add_child(blood_spray)
+				body.queue_free()
 					
 func hurt(damage: float, emit_signal: bool):
 	if state != State.Stunned:
@@ -136,4 +139,7 @@ func use_item(item, attackdir):
 	newitem.add_to_group(str(newitem.get_name(),self))
 	add_child(newitem)
 	newitem.direction(attackdir)
+	
+
+		
 	

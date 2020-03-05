@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Projectiles/bullet.gd" type="Script" id=1]
+[ext_resource path="res://Materials/bullet.tres" type="Material" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.0
+
+[node name="bullet" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource( 1 )
+
+[node name="bullet " type="Particles2D" parent="hitbox/CollisionShape2D"]
+amount = 300
+process_material = ExtResource( 2 )

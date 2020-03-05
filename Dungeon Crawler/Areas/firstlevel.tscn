@@ -1,17 +1,18 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tiles/bridge.tres" type="TileSet" id=2]
 [ext_resource path="res://Tiles/water.tres" type="TileSet" id=3]
 [ext_resource path="res://Tiles/land.tres" type="TileSet" id=4]
-[ext_resource path="res://Engine/camera.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Tiles/physics tile.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/NewUI.gd" type="Script" id=8]
-[ext_resource path="res://Tiles/enemy_tilemap.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Pickups/key.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Tiles/keydoor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Enemies/bloodspray.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Areas/Land.gd" type="Script" id=5]
+[ext_resource path="res://Engine/camera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Tiles/physics tile.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/NewUI.gd" type="Script" id=9]
+[ext_resource path="res://Tiles/enemy_tilemap.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Pickups/key.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Tiles/keydoor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Enemies/enemy type 2.tscn" type="PackedScene" id=13]
 
 [node name="Node" type="Node"]
 
@@ -43,17 +44,18 @@ cell_size = Vector2( 16, 16 )
 occluder_light_mask = 0
 format = 1
 tile_data = PoolIntArray( 1, 0, 0, 2, 0, 0, 3, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 655360, 0, 0, 655375, 0, 0, 655376, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720919, 0, 0, 720920, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786437, 0, 0, 786438, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0 )
+script = ExtResource( 5 )
 
-[node name="playercam" parent="." instance=ExtResource( 5 )]
+[node name="playercam" parent="." instance=ExtResource( 6 )]
 visible = false
 scale = Vector2( 1, 1 )
 current = true
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 6 )]
+[node name="KinematicBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 217.609, 208.695 )
 
-[node name="Overlay" parent="." instance=ExtResource( 7 )]
-script = ExtResource( 8 )
+[node name="Overlay" parent="." instance=ExtResource( 8 )]
+script = ExtResource( 9 )
 
 [node name="UI" parent="Overlay" index="0"]
 script = null
@@ -61,29 +63,28 @@ script = null
 [node name="TextureProgress" parent="Overlay/UI/bars/healthbar" index="0"]
 fill_mode = 0
 
-[node name="enemies" parent="." instance=ExtResource( 9 )]
-tile_data = PoolIntArray( 65538, 0, 0, 65546, 0, 0, 327703, 0, 0, 458775, 0, 0, 458778, 0, 0, 589847, 0, 0, 786438, 0, 0, 851969, 0, 0, 851974, 0, 0, 851975, 0, 0, 851978, 0, 0, 917507, 0, 0 )
+[node name="enemies" parent="." instance=ExtResource( 10 )]
 
-[node name="key" parent="." instance=ExtResource( 10 )]
+[node name="key" parent="." instance=ExtResource( 11 )]
 position = Vector2( 244.286, 199.004 )
 
 [node name="Sprite" parent="key" index="0"]
 position = Vector2( 0.297684, 0.0892944 )
 scale = Vector2( 1.28578, 1.32002 )
 
-[node name="keydoor" parent="." instance=ExtResource( 11 )]
+[node name="keydoor" parent="." instance=ExtResource( 12 )]
 position = Vector2( 263.472, 119.847 )
 rotation = 1.5708
 
-[node name="door" parent="." instance=ExtResource( 11 )]
+[node name="door" parent="." instance=ExtResource( 12 )]
 position = Vector2( 119.623, 247.582 )
 rotation = 3.14159
 
-[node name="key2" parent="." instance=ExtResource( 10 )]
+[node name="key2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 395.07, 101.326 )
 
-[node name="blood" parent="." instance=ExtResource( 12 )]
-position = Vector2( -78.2592, 0.19371 )
+[node name="enemy type 2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 99.5919, 213.127 )
 [connection signal="health_change" from="player" to="Overlay" method="_on_player_health_change"]
 
 [editable path="player"]
