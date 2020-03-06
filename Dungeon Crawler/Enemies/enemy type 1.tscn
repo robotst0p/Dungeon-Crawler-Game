@@ -49,3 +49,10 @@ shape = SubResource( 3 )
 [node name="process" type="VisibilityEnabler2D" parent="."]
 process_parent = true
 physics_process_parent = true
+
+[node name="attack_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="attack_reset" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

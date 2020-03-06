@@ -8,11 +8,10 @@ var DAMAGE = 1
 var movetimer_length = 15
 var selfposition
 var playerposition
+var viewport
+
 onready var player = get_parent().get_node("player")
 var projectile_scene = preload("res://Projectiles/enemy projectile.tscn")
-
-
-var viewport
 
 func _ready():
 #	$blood.set_emitting(false)

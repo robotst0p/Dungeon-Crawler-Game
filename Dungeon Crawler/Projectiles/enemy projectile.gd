@@ -17,8 +17,8 @@ func create(position, dir):
 
 func _process(delta):
 	distance = (self.transform.origin - originpos).length()
-	if (distance > 256):
+	if (distance > 300):
 		queue_free()
 	var t = self.get_transform()
-	t.origin = t.origin + self.attackdir * 1/35
+	t.origin = self.transform.origin + self.attackdir.normalized() * 1/2
 	self.set_transform(t)

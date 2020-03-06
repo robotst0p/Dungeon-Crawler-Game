@@ -21,7 +21,7 @@ var tree = get_tree()
 
 var stun_velocity = 125
 
-enum State { Default, Attack, Stunned }
+enum State { Default, Attack, Stunned, EnemyAttack }
 var state = State.Default
 
 var hit_stun_timer
@@ -42,7 +42,7 @@ func _ready():
 	add_child(hit_stun_timer)
 	
 func damage_loop(TYPE):
-	if (state == State.Default):
+	if (state == State.Default or state == State.EnemyAttack):
 		if TYPE == "ENEMY" and health <= 0:
 			var death_animation = preload("res://Enemies/enemy_death.tscn").instance()
 			get_parent().add_child(death_animation)
@@ -113,9 +113,14 @@ func movement_loop(speed):
 	var motion = Vector2.ZERO
 	match(state):
 		State.Default, State.Attack:
-			motion = movedir.normalized() * speed 
+			motion = movedir.normalized() * speed
 		State.Stunned:
 			motion = knockdir.normalized() * stun_velocity
+		State.EnemyAttack:
+			motion = self.movedir.normalized() * 75
+			if ($attack_timer.is_stopped()):
+				$attack_reset.start()
+				state = State.Default
 	move_and_slide(motion, Vector2(0,0))
 	
 func spritedir_loop():
@@ -139,7 +144,3 @@ func use_item(item, attackdir):
 	newitem.add_to_group(str(newitem.get_name(),self))
 	add_child(newitem)
 	newitem.direction(attackdir)
-	
-
-		
-	

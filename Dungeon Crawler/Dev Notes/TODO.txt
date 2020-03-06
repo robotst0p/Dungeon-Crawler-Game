@@ -12,10 +12,8 @@
 12) Main Menu
 13) Overhaul Combat
 14) Coins on death
-15) Drops on death
+15) Item Drops on death
 17) Replace player sprites and tiles sprites
 18) Procedural generation for map chunks
-19) Fix player projectiles not deleting when a distance away
-20) Add dash attack to enemies when player is within a certain range
 21) Parabolic projectile motion
 22) Fix respawing

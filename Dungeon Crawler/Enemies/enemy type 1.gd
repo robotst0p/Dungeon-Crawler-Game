@@ -6,12 +6,17 @@ var pushtoggle = 0
 var speed = 40
 var DAMAGE = 1
 var movetimer_length = 15
-var player = get_parent().get_node("player")
-var playerpos
 
+onready var player = get_parent().get_node("player")
+
+var playerpos
+var attdistance
 var viewport
 
 func _ready():
+	playerpos = player.transform.origin
+	print(self.transform.origin)
+	print(playerpos)
 #	$blood.set_emitting(false)
 	set_collision_mask_bit(1,1)
 	viewport = get_tree().get_root()
@@ -23,11 +28,18 @@ func _ready():
 	
 func _physics_process(delta):
 	playerpos = player.transform.origin
+	attdistance = (self.transform.origin - playerpos).length()
+	if ((attdistance/4) < 10) and $attack_timer.is_stopped() and $attack_reset.is_stopped():
+		movetimer_length
+		movedir = (self.playerpos - self.transform.origin)
+		print(movedir)
+		state = State.EnemyAttack
+		$attack_timer.start()
 	movement_loop(speed)
 	damage_loop(TYPE)
 	if movetimer > 0:
 		movetimer -= 1
-	if movetimer == 0 || is_on_wall():
+	if movetimer == 0 or is_on_wall():
 		movedir = dir.rand()
 		movetimer = movetimer_length
 

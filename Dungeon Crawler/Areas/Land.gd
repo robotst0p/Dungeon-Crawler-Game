@@ -6,7 +6,7 @@ func _ready():
 	randomize()
 	var landtiles = get_used_cells()
 	var size = get_cell_size()
-	for i in range(0,randi()%7+3):
+	for i in range(0,randi()%5+2):
 		var spawn_location = randi()%landtiles.size()-1+1
 		var tile = landtiles[spawn_location]
 		spawn_enemy(tile, size,1)

@@ -27,8 +27,10 @@ dir="*res://Engine/directions.gd"
 
 window/size/width=270
 window/size/height=243
+window/size/fullscreen=true
 window/size/test_width=640
 window/size/test_height=576
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 
 [importer_defaults]
