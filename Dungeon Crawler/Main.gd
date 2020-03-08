@@ -6,8 +6,8 @@ extends Node
 const PlayerScene = preload("res://newplayerscenetest.tscn")
 
 func _ready():
-	spawn_player_circle(Vector2(130, 120))
-		
+	spawn_player_circle(Vector2.ZERO)
+
 func spawn_player_circle(origin: Vector2) -> void:
 	var radius = 10
 	var phi = 0

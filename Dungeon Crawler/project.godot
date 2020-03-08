@@ -90,9 +90,8 @@ dir="*res://Engine/directions.gd"
 
 [display]
 
-window/size/width=270
-window/size/height=243
-window/size/fullscreen=true
+window/size/width=256
+window/size/height=256
 window/size/test_width=640
 window/size/test_height=576
 window/vsync/use_vsync=false
