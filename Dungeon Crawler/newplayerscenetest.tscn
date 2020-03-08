@@ -1,0 +1,113 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://GameObject.gd" type="Script" id=1]
+[ext_resource path="res://TransformWrapper.gd" type="Script" id=2]
+[ext_resource path="res://TransformWrapperNode2DCoupling.gd" type="Script" id=3]
+[ext_resource path="res://Health.gd" type="Script" id=4]
+[ext_resource path="res://Player/player.png" type="Texture" id=5]
+[ext_resource path="res://Spin.gd" type="Script" id=6]
+[ext_resource path="res://Player/player_animations/idledown.tres" type="Animation" id=7]
+[ext_resource path="res://Player/player_animations/idleleft.tres" type="Animation" id=8]
+[ext_resource path="res://Player/player_animations/idleright.tres" type="Animation" id=9]
+[ext_resource path="res://Player/player_animations/idleup.tres" type="Animation" id=10]
+[ext_resource path="res://Player/player_animations/pushdown.tres" type="Animation" id=11]
+[ext_resource path="res://Player/player_animations/pushleft.tres" type="Animation" id=12]
+[ext_resource path="res://Player/player_animations/pushright.tres" type="Animation" id=13]
+[ext_resource path="res://Player/player_animations/pushup.tres" type="Animation" id=14]
+[ext_resource path="res://Player/player_animations/walkdown.tres" type="Animation" id=15]
+[ext_resource path="res://Player/player_animations/walkleft.tres" type="Animation" id=16]
+[ext_resource path="res://Player/player_animations/walkright.tres" type="Animation" id=17]
+[ext_resource path="res://Player/player_animations/walkup.tres" type="Animation" id=18]
+[ext_resource path="res://PlayerAnimation.gd" type="Script" id=19]
+[ext_resource path="res://InputData.gd" type="Script" id=20]
+[ext_resource path="res://PlayerMovement.gd" type="Script" id=21]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.54069, 7.98638 )
+
+[node name="Player" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TransformWrapper" type="Node" parent="."]
+script = ExtResource( 2 )
+transform = Transform2D( 1, 0, 0, 1, 50, 50 )
+
+[node name="TransformKinematicCoupling" type="Node" parent="TransformWrapper"]
+script = ExtResource( 3 )
+transform_wrapper_path = NodePath("../../TransformWrapper")
+node_2D_path = NodePath("../../KinematicBody2D")
+leader_type = 1
+couple_origin_x = true
+couple_origin_y = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 4 )
+health = 10
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+flip_h = true
+vframes = 2
+hframes = 8
+
+[node name="TransformNode2DCoupling" type="Node" parent="Sprite"]
+script = ExtResource( 3 )
+transform_wrapper_path = NodePath("../../TransformWrapper")
+node_2D_path = NodePath("../../Sprite")
+couple_origin_x = true
+couple_origin_y = true
+couple_x_hat = true
+couple_y_hat = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="TransformNode2DCoupling2" type="Node" parent="Area2D"]
+script = ExtResource( 3 )
+transform_wrapper_path = NodePath("../../TransformWrapper")
+node_2D_path = NodePath("../../Area2D")
+couple_origin_x = true
+couple_origin_y = true
+couple_x_hat = true
+couple_y_hat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 4.0
+anims/idledown = ExtResource( 7 )
+anims/idleleft = ExtResource( 8 )
+anims/idleright = ExtResource( 9 )
+anims/idleup = ExtResource( 10 )
+anims/pushdown = ExtResource( 11 )
+anims/pushleft = ExtResource( 12 )
+anims/pushright = ExtResource( 13 )
+anims/pushup = ExtResource( 14 )
+anims/walkdown = ExtResource( 15 )
+anims/walkleft = ExtResource( 16 )
+anims/walkright = ExtResource( 17 )
+anims/walkup = ExtResource( 18 )
+
+[node name="PlayerAnimation" type="Node" parent="AnimationPlayer"]
+script = ExtResource( 19 )
+animation_player_path = NodePath("..")
+transform_wrapper_path = NodePath("../../TransformWrapper")
+kinematic_body_2D_path = NodePath("../../KinematicBody2D")
+player_movement_path = NodePath("../../PlayerMovement")
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 1 )
+
+[node name="InputData" type="Node" parent="."]
+script = ExtResource( 20 )
+
+[node name="PlayerMovement" type="Node" parent="."]
+script = ExtResource( 21 )
+input_data_path = NodePath("../InputData")
+kinematic_body_2D_path = NodePath("../KinematicBody2D")
+
+[node name="Spin" type="Node" parent="."]
+script = ExtResource( 6 )
+transform_holder_path = NodePath("../TransformWrapper")

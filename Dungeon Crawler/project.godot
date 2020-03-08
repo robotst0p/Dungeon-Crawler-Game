@@ -8,9 +8,74 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Component",
+"class": "AIRandomMovement",
+"language": "GDScript",
+"path": "res://AIRandomMovement.gd"
+}, {
+"base": "Node",
+"class": "Component",
+"language": "GDScript",
+"path": "res://Component.gd"
+}, {
+"base": "Node",
+"class": "GameObject",
+"language": "GDScript",
+"path": "res://GameObject.gd"
+}, {
+"base": "Component",
+"class": "Health",
+"language": "GDScript",
+"path": "res://Health.gd"
+}, {
+"base": "Component",
+"class": "InputData",
+"language": "GDScript",
+"path": "res://InputData.gd"
+}, {
+"base": "Node",
+"class": "Main",
+"language": "GDScript",
+"path": "res://Main.gd"
+}, {
+"base": "Component",
+"class": "PlayerAnimation",
+"language": "GDScript",
+"path": "res://PlayerAnimation.gd"
+}, {
+"base": "Component",
+"class": "PlayerMovement",
+"language": "GDScript",
+"path": "res://PlayerMovement.gd"
+}, {
+"base": "Component",
+"class": "Spin",
+"language": "GDScript",
+"path": "res://Spin.gd"
+}, {
+"base": "Component",
+"class": "TransformNode2DCoupling",
+"language": "GDScript",
+"path": "res://TransformWrapperNode2DCoupling.gd"
+}, {
+"base": "Component",
+"class": "TransformWrapper",
+"language": "GDScript",
+"path": "res://TransformWrapper.gd"
+} ]
 _global_script_class_icons={
-
+"AIRandomMovement": "",
+"Component": "",
+"GameObject": "",
+"Health": "",
+"InputData": "",
+"Main": "",
+"PlayerAnimation": "",
+"PlayerMovement": "",
+"Spin": "",
+"TransformNode2DCoupling": "",
+"TransformWrapper": ""
 }
 
 [application]

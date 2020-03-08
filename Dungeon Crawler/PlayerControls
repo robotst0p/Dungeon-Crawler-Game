@@ -1,0 +1,19 @@
+# PlayerMovement.gd
+
+class_name PlayerMovement
+extends Component
+
+export(NodePath) var input_data_path = null
+onready var input_data = get_node(input_data_path)
+
+var move_direction = Vector2.ZERO
+
+func _process(delta):
+	move_direction = Vector2(-int(Input.is_action_pressed(input_data.LEFT)) + int(Input.is_action_pressed(input_data.RIGHT)),
+							 -int(Input.is_action_pressed(input_data.UP)) + int(Input.is_action_pressed(input_data.DOWN)))
+		
+	if Input.is_action_pressed(input_data.DASH):
+		pass
+		
+	if Input.is_action_pressed(input_data.ATTACK):
+		pass
