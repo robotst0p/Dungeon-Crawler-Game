@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://GameObject.gd" type="Script" id=1]
 [ext_resource path="res://TransformWrapper.gd" type="Script" id=2]
 [ext_resource path="res://TransformWrapperNode2DCoupling.gd" type="Script" id=3]
 [ext_resource path="res://Health.gd" type="Script" id=4]
 [ext_resource path="res://Player/player.png" type="Texture" id=5]
-[ext_resource path="res://Spin.gd" type="Script" id=6]
 [ext_resource path="res://Player/player_animations/idledown.tres" type="Animation" id=7]
 [ext_resource path="res://Player/player_animations/idleleft.tres" type="Animation" id=8]
 [ext_resource path="res://Player/player_animations/idleright.tres" type="Animation" id=9]
@@ -32,7 +31,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 transform = Transform2D( 1, 0, 0, 1, 50, 50 )
 
-[node name="TransformKinematicCoupling" type="Node" parent="TransformWrapper"]
+[node name="TransformNode2DCoupling3" type="Node" parent="TransformWrapper"]
 script = ExtResource( 3 )
 transform_wrapper_path = NodePath("../../TransformWrapper")
 node_2D_path = NodePath("../../KinematicBody2D")
@@ -107,7 +106,6 @@ script = ExtResource( 20 )
 script = ExtResource( 21 )
 input_data_path = NodePath("../InputData")
 kinematic_body_2D_path = NodePath("../KinematicBody2D")
-
-[node name="Spin" type="Node" parent="."]
-script = ExtResource( 6 )
-transform_holder_path = NodePath("../TransformWrapper")
+dash_speed = 300
+dash_time = 0.2
+dash_recover_time = 0.3

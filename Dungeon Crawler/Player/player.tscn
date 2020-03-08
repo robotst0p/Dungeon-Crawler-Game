@@ -61,4 +61,3 @@ shape = SubResource( 2 )
 [node name="hit_reset_timer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
-
