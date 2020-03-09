@@ -3,11 +3,8 @@
 class_name PlayerMovement
 extends Component
 
-export(NodePath) var input_data_path = null
-onready var input_data = get_node(input_data_path)
-
-export(NodePath) var kinematic_body_2D_path = null
-onready var kinematic_body_2D = get_node(kinematic_body_2D_path)
+onready var input_data = game_object.get_child_of_type(InputData)
+onready var kinematic_body_2D = game_object.get_child_of_type(KinematicBody2D)
 
 var move_direction = Vector2.ZERO
 var knock_direction = Vector2.ZERO
@@ -26,6 +23,15 @@ export(float) var dash_recover_time = 0.5
 
 var dash_recover_timer = Timer.new()
 
+func stun():
+	if stunned_timer.is_stopped():
+		stunned_timer.start()
+		dash_timer.stop()
+		
+func knock_back(direction: Vector2) -> void:
+	#print(direction)
+	knock_direction = direction.normalized()
+
 func _ready():
 	stunned_timer.set_wait_time(stunned_time)
 	stunned_timer.set_one_shot(true)
@@ -43,7 +49,7 @@ func _process(_delta):
 	move_direction = Vector2(-int(Input.is_action_pressed(input_data.LeftAction)) + int(Input.is_action_pressed(input_data.RightAction)),
 							 -int(Input.is_action_pressed(input_data.UpAction)) + int(Input.is_action_pressed(input_data.DownAction)))
 
-	if Input.is_action_pressed(input_data.DashAction) and dash_recover_timer.is_stopped(): # and stamina >= 20
+	if Input.is_action_pressed(input_data.DashAction) and dash_recover_timer.is_stopped() and stunned_timer.is_stopped(): # and stamina >= 20
 		dash_timer.start()
 		dash_recover_timer.start()
 		
@@ -57,4 +63,4 @@ func _physics_process(_delta):
 	else:
 		motion = move_direction.normalized() * speed
 			
-	kinematic_body_2D.move_and_slide(motion, Vector2(0,0))
+	kinematic_body_2D.move_and_slide(motion)

@@ -1,7 +1,5 @@
 # TransformWrapper.gd
 
-
-
 class_name TransformWrapper
 extends Component
 

@@ -3,14 +3,9 @@
 class_name PlayerAnimation
 extends Component
 
-export(NodePath) var animation_player_path = null
-onready var animation_player = get_node(animation_player_path)
-
-export(NodePath) var kinematic_body_2D_path = null
-onready var kinematic_body_2D = get_node(kinematic_body_2D_path)
-
-export(NodePath) var player_movement_path = null
-onready var player_movement = get_node(player_movement_path)
+onready var animation_player = game_object.get_child_of_type(AnimationPlayer)
+onready var kinematic_body_2D = game_object.get_child_of_type(KinematicBody2D)
+onready var player_movement = game_object.get_child_of_type(PlayerMovement)
 
 var directions_dictionary = { Vector2(-1, 0) : "left", "left" : Vector2(-1, 0),
 							  Vector2(1, 0) : "right", "right" : Vector2(1, 0),

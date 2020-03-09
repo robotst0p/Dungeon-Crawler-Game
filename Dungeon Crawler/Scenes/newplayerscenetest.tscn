@@ -1,0 +1,79 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Scripts/GameObject.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Health.gd" type="Script" id=4]
+[ext_resource path="res://Player/player.png" type="Texture" id=5]
+[ext_resource path="res://Animations/Player/idledown.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Player/idleleft.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Player/idleright.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Player/idleup.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/Player/pushdown.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Player/pushleft.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Player/pushright.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/Player/pushup.tres" type="Animation" id=14]
+[ext_resource path="res://Animations/Player/walkdown.tres" type="Animation" id=15]
+[ext_resource path="res://Animations/Player/walkleft.tres" type="Animation" id=16]
+[ext_resource path="res://Animations/Player/walkright.tres" type="Animation" id=17]
+[ext_resource path="res://Animations/Player/walkup.tres" type="Animation" id=18]
+[ext_resource path="res://Scripts/PlayerAnimation.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/InputData.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=21]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.54112, 3.59411 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.571, 8.033 )
+
+[node name="Player" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 4 )
+health = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 4.0
+anims/idledown = ExtResource( 7 )
+anims/idleleft = ExtResource( 8 )
+anims/idleright = ExtResource( 9 )
+anims/idleup = ExtResource( 10 )
+anims/pushdown = ExtResource( 11 )
+anims/pushleft = ExtResource( 12 )
+anims/pushright = ExtResource( 13 )
+anims/pushup = ExtResource( 14 )
+anims/walkdown = ExtResource( 15 )
+anims/walkleft = ExtResource( 16 )
+anims/walkright = ExtResource( 17 )
+anims/walkup = ExtResource( 18 )
+
+[node name="PlayerAnimation" type="Node" parent="AnimationPlayer"]
+script = ExtResource( 19 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="KinematicBodyCollisionShape" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 0, 4.387 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+texture = ExtResource( 5 )
+flip_h = true
+vframes = 2
+hframes = 8
+
+[node name="Hitbox" type="Area2D" parent="KinematicBody2D"]
+
+[node name="HitboxCollisionShape" type="CollisionShape2D" parent="KinematicBody2D/Hitbox"]
+shape = SubResource( 2 )
+
+[node name="InputData" type="Node" parent="."]
+script = ExtResource( 20 )
+
+[node name="PlayerMovement" type="Node" parent="."]
+script = ExtResource( 21 )
+stunned_speed = 400
+dash_speed = 300
+stunned_time = 0.1
+dash_time = 0.2
+dash_recover_time = 0.3

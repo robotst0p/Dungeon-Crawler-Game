@@ -1,19 +1,31 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Player/player_animations/idledown.tres" type="Animation" id=2]
-[ext_resource path="res://Player/player_animations/idleleft.tres" type="Animation" id=3]
-[ext_resource path="res://Player/player_animations/idleright.tres" type="Animation" id=4]
-[ext_resource path="res://Player/player_animations/idleup.tres" type="Animation" id=5]
-[ext_resource path="res://Player/player_animations/pushdown.tres" type="Animation" id=6]
-[ext_resource path="res://Player/player_animations/pushleft.tres" type="Animation" id=7]
-[ext_resource path="res://Player/player_animations/pushright.tres" type="Animation" id=8]
-[ext_resource path="res://Player/player_animations/pushup.tres" type="Animation" id=9]
-[ext_resource path="res://Player/player_animations/walkdown.tres" type="Animation" id=10]
-[ext_resource path="res://Player/player_animations/walkleft.tres" type="Animation" id=11]
-[ext_resource path="res://Player/player_animations/walkright.tres" type="Animation" id=12]
-[ext_resource path="res://Player/player_animations/walkup.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/Player/idledown.tres" type="Animation" id=2]
+[ext_resource path="res://Animations/Player/idleleft.tres" type="Animation" id=3]
+[ext_resource path="res://Animations/Player/idleright.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/Player/idleup.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Player/pushdown.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/Player/pushleft.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Player/pushright.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Player/pushup.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Player/walkdown.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/Player/walkleft.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Player/walkright.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Player/walkup.tres" type="Animation" id=13]
 [ext_resource path="res://Player/player.png" type="Texture" id=14]
+
+
+
+
+
+
+
+
+
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.85432, 7.48719 )

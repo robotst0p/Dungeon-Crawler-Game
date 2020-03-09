@@ -3,8 +3,7 @@
 class_name AIRandomMovement
 extends Component
 
-export(NodePath) var kinematic_body_2D_path
-onready var kinematic_body_2D = get_node(kinematic_body_2D_path)
+onready var kinematic_body_2D = get_parent()
 
 export(int) var speed = 5
 export(int) var move_time = 1
