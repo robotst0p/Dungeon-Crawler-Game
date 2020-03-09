@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/GameObject.gd" type="Script" id=1]
+[ext_resource path="res://Player/player_hurt.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Health.gd" type="Script" id=4]
 [ext_resource path="res://Player/player.png" type="Texture" id=5]
 [ext_resource path="res://Animations/Player/idledown.tres" type="Animation" id=7]
@@ -49,10 +50,14 @@ anims/walkup = ExtResource( 18 )
 
 [node name="PlayerAnimation" type="Node" parent="AnimationPlayer"]
 script = ExtResource( 19 )
+regular_texture = ExtResource( 5 )
+hurt_texture = ExtResource( 2 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+collision_mask = 6
 
 [node name="KinematicBodyCollisionShape" type="CollisionShape2D" parent="KinematicBody2D"]
+visible = false
 position = Vector2( 0, 4.387 )
 shape = SubResource( 1 )
 
@@ -63,6 +68,8 @@ vframes = 2
 hframes = 8
 
 [node name="Hitbox" type="Area2D" parent="KinematicBody2D"]
+visible = false
+collision_mask = 2
 
 [node name="HitboxCollisionShape" type="CollisionShape2D" parent="KinematicBody2D/Hitbox"]
 shape = SubResource( 2 )
@@ -72,8 +79,8 @@ script = ExtResource( 20 )
 
 [node name="PlayerMovement" type="Node" parent="."]
 script = ExtResource( 21 )
-stunned_speed = 400
+stunned_speed = 300
 dash_speed = 300
-stunned_time = 0.1
+stunned_time = 0.2
 dash_time = 0.2
 dash_recover_time = 0.3

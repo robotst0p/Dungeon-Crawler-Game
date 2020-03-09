@@ -29,7 +29,6 @@ func stun():
 		dash_timer.stop()
 		
 func knock_back(direction: Vector2) -> void:
-	#print(direction)
 	knock_direction = direction.normalized()
 
 func _ready():
@@ -52,6 +51,9 @@ func _process(_delta):
 	if Input.is_action_pressed(input_data.DashAction) and dash_recover_timer.is_stopped() and stunned_timer.is_stopped(): # and stamina >= 20
 		dash_timer.start()
 		dash_recover_timer.start()
+		
+	if knock_direction != Vector2.ZERO and stunned_timer.is_stopped():
+		knock_direction = Vector2.ZERO
 		
 func _physics_process(_delta):
 	var motion = Vector2.ZERO

@@ -2,22 +2,34 @@
 
 extends Node
 class_name GameObject
-
-func has_child_of_type(child_class) -> bool:
-	for i in range(get_child_count()):
-		if get_child(i) is child_class:
-			return true
-	return false
-
+	
 func get_child_of_type(child_class):
-	for child in get_children():
-		if child is child_class:
-			return child
+	var queue = Array()
+	queue.push_back(self)
+	
+	while !queue.empty():
+		var node = queue.pop_front()
+		if node is child_class:
+			return node
+		for child in node.get_children():
+			queue.push_back(child)
+	
 	return null
 	
 func get_children_of_type(child_class):
-	var child_class_array = Array()
-	for child in get_children():
-		if child is child_class:
-			child_class_array.push_back(child)
-	return child_class_array
+	var children_of_type = Array()
+	
+	var queue = Array()
+	queue.push_back(self)
+	
+	while !queue.empty():
+		var node = queue.pop_front()
+		if node is child_class:
+			children_of_type.push_back(node)
+		for child in node.get_children():
+			queue.push_back(child)
+	
+	if children_of_type.size() > 0:
+		return children_of_type
+		
+	return null

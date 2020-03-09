@@ -3,9 +3,15 @@
 class_name PlayerAnimation
 extends Component
 
+onready var sprite = game_object.get_child_of_type(Sprite)
 onready var animation_player = game_object.get_child_of_type(AnimationPlayer)
 onready var kinematic_body_2D = game_object.get_child_of_type(KinematicBody2D)
 onready var player_movement = game_object.get_child_of_type(PlayerMovement)
+
+export(Resource) var regular_texture
+export(Resource) var hurt_texture
+
+var stunned_copy = false
 
 var directions_dictionary = { Vector2(-1, 0) : "left", "left" : Vector2(-1, 0),
 							  Vector2(1, 0) : "right", "right" : Vector2(1, 0),
@@ -31,4 +37,10 @@ func _process(_delta):
 	elif player_movement.move_direction != Vector2.ZERO:
 		if animation_player.current_animation != str("walk", animation_direction):
 			animation_player.play(str("walk", animation_direction))
-	
+			
+	if !stunned_copy and !player_movement.stunned_timer.is_stopped():
+		sprite.texture = hurt_texture
+		stunned_copy = true
+	elif stunned_copy and player_movement.stunned_timer.is_stopped():
+		sprite.texture = regular_texture
+		stunned_copy = false

@@ -15,11 +15,6 @@ _global_script_classes=[ {
 "path": "res://Scripts/AIRandomMovement.gd"
 }, {
 "base": "Reference",
-"class": "Area2DHurtOnTouch",
-"language": "GDScript",
-"path": "res://Scripts/Area2DHurtOnTouch.gd"
-}, {
-"base": "Reference",
 "class": "Component",
 "language": "GDScript",
 "path": "res://Scripts/Component.gd"
@@ -28,6 +23,11 @@ _global_script_classes=[ {
 "class": "EnemyAnimation",
 "language": "GDScript",
 "path": "res://Scripts/EnemyAnimation.gd"
+}, {
+"base": "Component",
+"class": "EnemyHurtPlayerOnTouch",
+"language": "GDScript",
+"path": "res://Scripts/EnemyHurtPlayerOnTouch.gd"
 }, {
 "base": "Node",
 "class": "GameObject",
@@ -44,12 +44,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/InputData.gd"
 }, {
-"base": "Reference",
+"base": "Component",
 "class": "PlayerAnimation",
 "language": "GDScript",
 "path": "res://Scripts/PlayerAnimation.gd"
 }, {
-"base": "Reference",
+"base": "Component",
 "class": "PlayerMovement",
 "language": "GDScript",
 "path": "res://Scripts/PlayerMovement.gd"
@@ -71,9 +71,9 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AIRandomMovement": "",
-"Area2DHurtOnTouch": "",
 "Component": "",
 "EnemyAnimation": "",
+"EnemyHurtPlayerOnTouch": "",
 "GameObject": "",
 "Health": "",
 "InputData": "",
@@ -177,6 +177,22 @@ dash={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
+OpenConsole={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":96,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Enter={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="terrain"
 
 [rendering]
 
