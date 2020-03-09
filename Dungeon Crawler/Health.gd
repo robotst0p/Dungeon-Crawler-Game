@@ -7,3 +7,4 @@ export(int) var health = 100
 
 func hurt(damage: int):
 	health -= damage
+	print(str("Ouch! Health is now: ", health))

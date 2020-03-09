@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://GameObject.gd" type="Script" id=1]
+[ext_resource path="res://TransformWrapperNode2DCoupling.gd" type="Script" id=2]
 [ext_resource path="res://Health.gd" type="Script" id=4]
 [ext_resource path="res://Player/player.png" type="Texture" id=5]
 [ext_resource path="res://Player/player_animations/idledown.tres" type="Animation" id=7]
@@ -21,6 +22,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.54112, 3.59411 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.571, 8.033 )
 
 [node name="Player" type="Node"]
 script = ExtResource( 1 )
@@ -72,3 +76,17 @@ kinematic_body_2D_path = NodePath("../KinematicBody2D")
 dash_speed = 300
 dash_time = 0.2
 dash_recover_time = 0.3
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 2 )
+
+[node name="TransformCoupling" type="Node" parent="Hitbox"]
+script = ExtResource( 2 )
+transform_holder_leader_path = NodePath("../../KinematicBody2D")
+transform_holder_follower_path = NodePath("..")
+couple_origin_x = true
+couple_origin_y = true
+couple_x_hat = true
+couple_y_hat = true
