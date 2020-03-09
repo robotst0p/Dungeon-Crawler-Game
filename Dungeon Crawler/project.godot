@@ -55,7 +55,7 @@ _global_script_classes=[ {
 "path": "res://Spin.gd"
 }, {
 "base": "Component",
-"class": "TransformNode2DCoupling",
+"class": "TransformCoupling",
 "language": "GDScript",
 "path": "res://TransformWrapperNode2DCoupling.gd"
 }, {
@@ -74,7 +74,7 @@ _global_script_class_icons={
 "PlayerAnimation": "",
 "PlayerMovement": "",
 "Spin": "",
-"TransformNode2DCoupling": "",
+"TransformCoupling": "",
 "TransformWrapper": ""
 }
 

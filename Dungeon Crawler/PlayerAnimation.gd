@@ -6,9 +6,6 @@ extends Component
 export(NodePath) var animation_player_path = null
 onready var animation_player = get_node(animation_player_path)
 
-export(NodePath) var transform_wrapper_path = null
-onready var transform_wrapper = get_node(transform_wrapper_path)
-
 export(NodePath) var kinematic_body_2D_path = null
 onready var kinematic_body_2D = get_node(kinematic_body_2D_path)
 
@@ -34,7 +31,7 @@ func _process(_delta):
 			animation_player.play(str("idle", animation_direction))
 	elif kinematic_body_2D.is_on_wall():
 		if animation_player.current_animation != str("push", animation_direction):
-			if kinematic_body_2D.test_move(transform_wrapper.transform, directions_dictionary.get(animation_direction)):
+			if kinematic_body_2D.test_move(kinematic_body_2D.transform, directions_dictionary.get(animation_direction)):
 				animation_player.current_animation = str("push", animation_direction)
 	elif player_movement.move_direction != Vector2.ZERO:
 		if animation_player.current_animation != str("walk", animation_direction):

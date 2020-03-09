@@ -1,6 +1,6 @@
 # TransformWrapper.gd
 
-tool
+
 
 class_name TransformWrapper
 extends Component
@@ -12,8 +12,3 @@ func set_transform(t: Transform2D):
 	
 func get_transform():
 	return transform
-
-#func _physics_process(delta):
-#	for i in range(parent.get_child_count()):
-#		if parent.get_child(i) is Sprite:
-#			parent.get_child(i).transform = transform
