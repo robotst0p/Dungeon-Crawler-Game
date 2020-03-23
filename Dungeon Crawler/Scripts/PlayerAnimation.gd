@@ -1,46 +1,88 @@
-# PlayerAnimation.gd
-
 class_name PlayerAnimation
 extends Component
 
-onready var sprite = game_object.get_child_of_type(Sprite)
-onready var animation_player = game_object.get_child_of_type(AnimationPlayer)
-onready var kinematic_body_2D = game_object.get_child_of_type(KinematicBody2D)
-onready var player_movement = game_object.get_child_of_type(PlayerMovement)
 
-export(Resource) var regular_texture
-export(Resource) var hurt_texture
 
-var stunned_copy = false
+# this component requires:
+#	- a default texture
+#	- a stunned texture
+#	- Sprite
+#	- KinematicBody2D
+#	- CharacterController
 
-var directions_dictionary = { Vector2(-1, 0) : "left", "left" : Vector2(-1, 0),
-							  Vector2(1, 0) : "right", "right" : Vector2(1, 0),
-							  Vector2(0, -1) : "up", "up" : Vector2(0, -1),
-							  Vector2(0, 1) : "down", "down" : Vector2(0, 1) }
-							
+
+
+# probably move this to a facing direction component or something
+var dir_vec_to_str = { Vector2(-1, 0) : "left",
+					   Vector2(1, 0)  : "right",
+					   Vector2(0, -1) : "up", 
+					   Vector2(0, 1)  : "down" }
+
+var dir_str_to_vec = { "left"  : Vector2(-1, 0),
+					   "right" : Vector2(1, 0),
+					   "up"    : Vector2(0, -1),
+					   "down"  : Vector2(0, 1) }
+
+
+
+export(Resource) var default_texture
+export(Resource) var stunned_texture
+
+
+
+var was_stunned = false
 var animation_direction = "down"
 
+
+
+onready var sprite = game_object.get_child_of_type(Sprite)
+onready var animation_player = game_object.get_child_of_type(AnimationPlayer)
+onready var kinematic_body2D = game_object.get_child_of_type(KinematicBody2D)
+onready var character_controller = game_object.get_child_of_type(CharacterController)
+
+
+
 func _ready():
+	assert(default_texture is Texture)
+	assert(stunned_texture is Texture)
+	assert(sprite is Sprite)
+	assert(animation_player is AnimationPlayer)
+	assert(kinematic_body2D is KinematicBody2D)
+	assert(character_controller is CharacterController)
+
 	animation_player.play("idledown")
-	
+
+
+
 func _process(_delta):
-	if directions_dictionary.has(player_movement.move_direction):
-		animation_direction = directions_dictionary.get(player_movement.move_direction)
-	
-	if player_movement.move_direction == Vector2.ZERO or !player_movement.stunned_timer.is_stopped():
+	# set animation_direction to the last cardinal direction the player walked in
+	if dir_vec_to_str.has(character_controller.walk_direction):
+		animation_direction = dir_vec_to_str.get(character_controller.walk_direction)
+
+
+	# when not moving or when stunned, play idle animation
+	if character_controller.walk_direction == Vector2.ZERO or character_controller.is_stunned():
 		if animation_player.current_animation != str("idle", animation_direction):
 			animation_player.play(str("idle", animation_direction))
-	elif kinematic_body_2D.is_on_wall():
+
+
+	# when moving into a wall, play push animation
+	elif kinematic_body2D.is_on_wall():
 		if animation_player.current_animation != str("push", animation_direction):
-			if kinematic_body_2D.test_move(kinematic_body_2D.transform, directions_dictionary.get(animation_direction)):
+			if kinematic_body2D.test_move(kinematic_body2D.transform, dir_str_to_vec.get(animation_direction)):
 				animation_player.current_animation = str("push", animation_direction)
-	elif player_movement.move_direction != Vector2.ZERO:
+
+
+	# otherwise, if walking, play walk animation
+	elif character_controller.walk_direction != Vector2.ZERO:
 		if animation_player.current_animation != str("walk", animation_direction):
 			animation_player.play(str("walk", animation_direction))
-			
-	if !stunned_copy and !player_movement.stunned_timer.is_stopped():
-		sprite.texture = hurt_texture
-		stunned_copy = true
-	elif stunned_copy and player_movement.stunned_timer.is_stopped():
-		sprite.texture = regular_texture
-		stunned_copy = false
+
+
+	# change textures if player was just stunned/unstunned
+	if !was_stunned and character_controller.is_stunned():
+		sprite.texture = stunned_texture
+		was_stunned = true
+	elif was_stunned and !character_controller.is_stunned():
+		sprite.texture = default_texture
+		was_stunned = false

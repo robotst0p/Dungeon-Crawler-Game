@@ -241,7 +241,7 @@ tracks/0/keys = {
 "values": [ 2, 4 ]
 }
 
-[node name="Main" type="Node"]
+[node name="World" type="Node"]
 
 [node name="Terrain" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -257,12 +257,28 @@ editor_draw_screen = false
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 
-[node name="KinematicBody2D" parent="Player" index="2"]
+[node name="PlayerSprite" parent="Player" index="1"]
 position = Vector2( -60, 0 )
+
+[node name="KinematicBody2D" parent="Player" index="3"]
+visible = true
+position = Vector2( -60, 0 )
+
+[node name="Hitbox" parent="Player" index="4"]
+visible = true
+position = Vector2( -60, 0 )
+
+[node name="TransformCoupling" parent="Player" index="9"]
+transform_holder_leader_path = NodePath("../../../World/Player/KinematicBody2D")
+transform_holder_follower_path_1 = NodePath("../../../World/Player/PlayerSprite")
+transform_holder_follower_path_2 = NodePath("../../../World/Player/Hitbox")
 
 [node name="Player2" parent="." instance=ExtResource( 4 )]
 
-[node name="AnimationPlayer" parent="Player2" index="1"]
+[node name="PlayerSprite" parent="Player2" index="1"]
+position = Vector2( 60, 0 )
+
+[node name="AnimationPlayer" parent="Player2" index="2"]
 anims/idledown = SubResource( 3 )
 anims/idleleft = SubResource( 4 )
 anims/idleright = SubResource( 5 )
@@ -276,23 +292,36 @@ anims/walkleft = SubResource( 12 )
 anims/walkright = SubResource( 13 )
 anims/walkup = SubResource( 14 )
 
-[node name="KinematicBody2D" parent="Player2" index="2"]
+[node name="KinematicBody2D" parent="Player2" index="3"]
 position = Vector2( 60, 0 )
 
-[node name="InputData" parent="Player2" index="3"]
-LeftAction = "ui_right"
-RightAction = "ui_left"
-UpAction = "ui_down"
-DownAction = "ui_up"
+[node name="Hitbox" parent="Player2" index="4"]
+position = Vector2( 60, 0 )
+
+[node name="TransformCoupling" parent="Player2" index="9"]
+transform_holder_leader_path = NodePath("../../../World/Player2/KinematicBody2D")
+transform_holder_follower_path_1 = NodePath("../../../World/Player2/PlayerSprite")
+transform_holder_follower_path_2 = NodePath("../../../World/Player2/Hitbox")
 
 [node name="Spin" type="Node" parent="Player2"]
 script = ExtResource( 6 )
-transform_holder_path = NodePath("../KinematicBody2D")
+transform_holder_path = NodePath("../../../World/Player2/KinematicBody2D")
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 
-[node name="KinematicBody2D" parent="Enemy" index="2"]
+[node name="Sprite" parent="Enemy" index="1"]
 position = Vector2( -60, 60 )
+
+[node name="KinematicBody2D" parent="Enemy" index="3"]
+position = Vector2( -60, 60 )
+
+[node name="Hitbox" parent="Enemy" index="4"]
+position = Vector2( -60, 60 )
+
+[node name="TransformCoupling" parent="Enemy" index="6"]
+transform_holder_leader_path = NodePath("../../../World/Enemy/KinematicBody2D")
+transform_holder_follower_path_1 = NodePath("../../../World/Enemy/Sprite")
+transform_holder_follower_path_2 = NodePath("../../../World/Enemy/Hitbox")
 
 [editable path="Player"]
 

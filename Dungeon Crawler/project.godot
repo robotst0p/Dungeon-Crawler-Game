@@ -9,37 +9,52 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
-"class": "AIRandomMovement",
+"base": "Component",
+"class": "Area2DHurtPlayerOnTouch",
 "language": "GDScript",
-"path": "res://Scripts/AIRandomMovement.gd"
+"path": "res://Scripts/Area2DHurtPlayerOnTouch.gd"
 }, {
-"base": "Reference",
+"base": "Component",
+"class": "BaseInventory",
+"language": "GDScript",
+"path": "res://Scripts/BaseInventory.gd"
+}, {
+"base": "Component",
+"class": "CharacterController",
+"language": "GDScript",
+"path": "res://Scripts/CharacterController.gd"
+}, {
+"base": "BaseInventory",
+"class": "ChraracterInventory",
+"language": "GDScript",
+"path": "res://Scripts/CharacterInventory.gd"
+}, {
+"base": "Node",
 "class": "Component",
 "language": "GDScript",
 "path": "res://Scripts/Component.gd"
+}, {
+"base": "Component",
+"class": "DrawItemsOnCharacter",
+"language": "GDScript",
+"path": "res://Scripts/DrawItemsOnCharacter.gd"
 }, {
 "base": "Reference",
 "class": "EnemyAnimation",
 "language": "GDScript",
 "path": "res://Scripts/EnemyAnimation.gd"
 }, {
-"base": "Component",
-"class": "EnemyHurtPlayerOnTouch",
-"language": "GDScript",
-"path": "res://Scripts/EnemyHurtPlayerOnTouch.gd"
-}, {
 "base": "Node",
 "class": "GameObject",
 "language": "GDScript",
 "path": "res://Scripts/GameObject.gd"
 }, {
-"base": "Reference",
+"base": "Component",
 "class": "Health",
 "language": "GDScript",
 "path": "res://Scripts/Health.gd"
 }, {
-"base": "Reference",
+"base": "Component",
 "class": "InputData",
 "language": "GDScript",
 "path": "res://Scripts/InputData.gd"
@@ -50,9 +65,19 @@ _global_script_classes=[ {
 "path": "res://Scripts/PlayerAnimation.gd"
 }, {
 "base": "Component",
-"class": "PlayerMovement",
+"class": "PlayerInput",
 "language": "GDScript",
-"path": "res://Scripts/PlayerMovement.gd"
+"path": "res://Scripts/PlayerInput.gd"
+}, {
+"base": "Component",
+"class": "RandomMovement",
+"language": "GDScript",
+"path": "res://Scripts/RandomMovement.gd"
+}, {
+"base": "WeaponController",
+"class": "ShotgunController",
+"language": "GDScript",
+"path": "res://Scripts/ShotgunController.gd"
 }, {
 "base": "Reference",
 "class": "Spin",
@@ -68,27 +93,37 @@ _global_script_classes=[ {
 "class": "TransformWrapper",
 "language": "GDScript",
 "path": "res://Scripts/TransformWrapper.gd"
+}, {
+"base": "Component",
+"class": "WeaponController",
+"language": "GDScript",
+"path": "res://Scripts/WeaponController.gd"
 } ]
 _global_script_class_icons={
-"AIRandomMovement": "",
+"Area2DHurtPlayerOnTouch": "",
+"BaseInventory": "",
+"CharacterController": "",
+"ChraracterInventory": "",
 "Component": "",
+"DrawItemsOnCharacter": "",
 "EnemyAnimation": "",
-"EnemyHurtPlayerOnTouch": "",
 "GameObject": "",
 "Health": "",
 "InputData": "",
 "PlayerAnimation": "",
-"PlayerMovement": "",
+"PlayerInput": "",
+"RandomMovement": "",
+"ShotgunController": "",
 "Spin": "",
 "TransformCoupling": "",
-"TransformWrapper": ""
+"TransformWrapper": "",
+"WeaponController": ""
 }
 
 [application]
 
 config/name="Dungeon Crawler"
-run/main_scene="res://Areas/firstlevel.tscn"
-config/icon="res://Player/icon.png"
+run/main_scene="res://Scenes/Viewports.tscn"
 
 [autoload]
 

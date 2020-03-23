@@ -1,8 +1,23 @@
-# GameObject.gd
-
 extends Node
 class_name GameObject
+
+
+
+func has_child_of_type(child_class):
+	var queue = Array()
+	queue.push_back(self)
 	
+	while !queue.empty():
+		var node = queue.pop_front()
+		if node is child_class:
+			return true
+		for child in node.get_children():
+			queue.push_back(child)
+	
+	return false
+
+
+
 func get_child_of_type(child_class):
 	var queue = Array()
 	queue.push_back(self)
@@ -14,8 +29,11 @@ func get_child_of_type(child_class):
 		for child in node.get_children():
 			queue.push_back(child)
 	
+	assert(false)
 	return null
-	
+
+
+
 func get_children_of_type(child_class):
 	var children_of_type = Array()
 	

@@ -1,9 +1,11 @@
-# Component.gd
-
 class_name Component
 extends Node
 
-onready var game_object = get_game_object(get_parent())
+
+
+onready var game_object = get_game_object(self.get_parent())
+
+
 
 func get_game_object(node) -> GameObject:
 	if node is GameObject:
