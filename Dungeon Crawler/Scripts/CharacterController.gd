@@ -22,7 +22,6 @@ var dash_direction = Vector2.ZERO
 var knock_back_direction = Vector2.ZERO
 
 
-
 onready var kinematic_body2D = game_object.get_child_of_type(KinematicBody2D)
 
 onready var stunned_timer = Timer.new()
@@ -60,16 +59,25 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
-	var motion = Vector2.ZERO
+	kinematic_body2D.move_and_slide(get_move_direction())
 	
+	
+
+func get_move_direction():
 	if !dash_timer.is_stopped():
-		motion = dash_direction * dash_speed
+		return dash_direction * dash_speed
 	elif !stunned_timer.is_stopped():
-		motion = knock_back_direction * stunned_speed
+		return knock_back_direction * stunned_speed
 	else:
-		motion = walk_direction * walk_speed
-			
-	kinematic_body2D.move_and_slide(motion)
+		return walk_direction * walk_speed
+
+
+
+func get_facing_direction():
+	if !dash_timer.is_stopped():
+		return dash_direction
+	else:
+		return walk_direction
 
 
 

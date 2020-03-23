@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/GameObject.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/enemy.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scripts/RandomMovement.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/Area2DHurtPlayerOnTouch.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/EnemyAnimation.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/CharacterController.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.468, 4.199 )
@@ -49,9 +50,9 @@ shape = SubResource( 2 )
 [node name="Area2DHurtPlayerOnTouch" type="Node" parent="Hitbox"]
 script = ExtResource( 7 )
 
-[node name="AIRandomMovement" type="Node" parent="."]
+[node name="RandomMovement" type="Node" parent="."]
 script = ExtResource( 6 )
-speed = 30
+move_time = 0.8
 
 [node name="TransformCoupling" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -62,3 +63,6 @@ couple_origin_x = true
 couple_origin_y = true
 couple_x_hat = true
 couple_y_hat = true
+
+[node name="CharacterController" type="Node" parent="."]
+script = ExtResource( 9 )

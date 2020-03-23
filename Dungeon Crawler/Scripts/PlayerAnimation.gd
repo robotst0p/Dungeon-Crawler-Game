@@ -55,7 +55,7 @@ func _ready():
 
 
 func _process(_delta):
-	# set animation_direction to the last cardinal direction the player walked in
+	# set animation_direction to the last cardinal direction the character walked in
 	if dir_vec_to_str.has(character_controller.walk_direction):
 		animation_direction = dir_vec_to_str.get(character_controller.walk_direction)
 
@@ -67,10 +67,9 @@ func _process(_delta):
 
 
 	# when moving into a wall, play push animation
-	elif kinematic_body2D.is_on_wall():
+	elif kinematic_body2D.is_on_wall() and kinematic_body2D.test_move(kinematic_body2D.transform, dir_str_to_vec.get(animation_direction)):
 		if animation_player.current_animation != str("push", animation_direction):
-			if kinematic_body2D.test_move(kinematic_body2D.transform, dir_str_to_vec.get(animation_direction)):
-				animation_player.current_animation = str("push", animation_direction)
+			animation_player.current_animation = str("push", animation_direction)
 
 
 	# otherwise, if walking, play walk animation
@@ -79,7 +78,7 @@ func _process(_delta):
 			animation_player.play(str("walk", animation_direction))
 
 
-	# change textures if player was just stunned/unstunned
+	# change textures if character was just stunned/unstunned
 	if !was_stunned and character_controller.is_stunned():
 		sprite.texture = stunned_texture
 		was_stunned = true

@@ -86,7 +86,7 @@ primary_weapon_path = NodePath("Shotgun")
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 20 )
 
-[node name="KinematicBodyMovement" type="Node" parent="."]
+[node name="CharacterController" type="Node" parent="."]
 script = ExtResource( 21 )
 stunned_speed = 300
 dash_speed = 300

@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tiles/bridge.png" type="Texture" id=2]
 [ext_resource path="res://Tiles/water.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/newplayerscenetest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/newenemyscenetest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/Spin.gd" type="Script" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -37,210 +36,6 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 1/z_index = 0
 
-[sub_resource type="Animation" id=3]
-resource_name = "idledown"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "idleleft"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 5 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "idleright"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 7 ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "idleup"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2 ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "pushdown"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( -0.5, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 8, 9 ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "pushleft"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( -0.5, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 12, 13 ]
-}
-
-[sub_resource type="Animation" id=9]
-resource_name = "pushright"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( -0.5, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 14, 15 ]
-}
-
-[sub_resource type="Animation" id=10]
-resource_name = "pushup"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 10, 12 ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "walkdown"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 2 ]
-}
-
-[sub_resource type="Animation" id=12]
-resource_name = "walkleft"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 4, 6 ]
-}
-
-[sub_resource type="Animation" id=13]
-resource_name = "walkright"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 6, 8 ]
-}
-
-[sub_resource type="Animation" id=14]
-resource_name = "walkup"
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 2, 4 ]
-}
-
 [node name="World" type="Node"]
 
 [node name="Terrain" type="TileMap" parent="."]
@@ -261,51 +56,10 @@ editor_draw_screen = false
 position = Vector2( -60, 0 )
 
 [node name="KinematicBody2D" parent="Player" index="3"]
-visible = true
 position = Vector2( -60, 0 )
 
 [node name="Hitbox" parent="Player" index="4"]
-visible = true
 position = Vector2( -60, 0 )
-
-[node name="TransformCoupling" parent="Player" index="9"]
-transform_holder_leader_path = NodePath("../../../World/Player/KinematicBody2D")
-transform_holder_follower_path_1 = NodePath("../../../World/Player/PlayerSprite")
-transform_holder_follower_path_2 = NodePath("../../../World/Player/Hitbox")
-
-[node name="Player2" parent="." instance=ExtResource( 4 )]
-
-[node name="PlayerSprite" parent="Player2" index="1"]
-position = Vector2( 60, 0 )
-
-[node name="AnimationPlayer" parent="Player2" index="2"]
-anims/idledown = SubResource( 3 )
-anims/idleleft = SubResource( 4 )
-anims/idleright = SubResource( 5 )
-anims/idleup = SubResource( 6 )
-anims/pushdown = SubResource( 7 )
-anims/pushleft = SubResource( 8 )
-anims/pushright = SubResource( 9 )
-anims/pushup = SubResource( 10 )
-anims/walkdown = SubResource( 11 )
-anims/walkleft = SubResource( 12 )
-anims/walkright = SubResource( 13 )
-anims/walkup = SubResource( 14 )
-
-[node name="KinematicBody2D" parent="Player2" index="3"]
-position = Vector2( 60, 0 )
-
-[node name="Hitbox" parent="Player2" index="4"]
-position = Vector2( 60, 0 )
-
-[node name="TransformCoupling" parent="Player2" index="9"]
-transform_holder_leader_path = NodePath("../../../World/Player2/KinematicBody2D")
-transform_holder_follower_path_1 = NodePath("../../../World/Player2/PlayerSprite")
-transform_holder_follower_path_2 = NodePath("../../../World/Player2/Hitbox")
-
-[node name="Spin" type="Node" parent="Player2"]
-script = ExtResource( 6 )
-transform_holder_path = NodePath("../../../World/Player2/KinematicBody2D")
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 
@@ -318,13 +72,6 @@ position = Vector2( -60, 60 )
 [node name="Hitbox" parent="Enemy" index="4"]
 position = Vector2( -60, 60 )
 
-[node name="TransformCoupling" parent="Enemy" index="6"]
-transform_holder_leader_path = NodePath("../../../World/Enemy/KinematicBody2D")
-transform_holder_follower_path_1 = NodePath("../../../World/Enemy/Sprite")
-transform_holder_follower_path_2 = NodePath("../../../World/Enemy/Hitbox")
-
 [editable path="Player"]
-
-[editable path="Player2"]
 
 [editable path="Enemy"]
